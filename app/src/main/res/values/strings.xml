@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CropDigital</string>
+    <string name="loading">Loading...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="parcela">Parcela</string>
+    <string name="tipo_de_tarea">Tipo de tarea</string>
+    <string name="comentario">Comentario</string>
+    <string name="ver_mas">Ver más</string>
+    <string name="nuevo_registro">Nuevo Registro</string>
+</resources>
