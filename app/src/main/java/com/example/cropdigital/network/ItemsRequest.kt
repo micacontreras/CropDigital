@@ -5,9 +5,7 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Items(
-    @Json(name = "_id")
-    val id: String,
+data class ItemsRequest(
     @Json(name = "index")
     val index: Int,
     @Json(name = "parcel")
@@ -15,11 +13,5 @@ data class Items(
     @Json(name = "taskType")
     val taskType: String,
     @Json(name = "comment")
-    val comment: String,
-    @Json(name = "createdAt")
-    val createdAt: Int,
-    @Json(name = "updatedAt")
-    val updatedAt: Int,
-    @Json(name = "__v")
-    val v: Int
+    val comment: String
 ) : Parcelable

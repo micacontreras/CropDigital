@@ -9,4 +9,7 @@
     <string name="comentario">Comentario</string>
     <string name="ver_mas">Ver más</string>
     <string name="nuevo_registro">Nuevo Registro</string>
+    <string name="close">Close</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="guardar">Guardar</string>
 </resources>

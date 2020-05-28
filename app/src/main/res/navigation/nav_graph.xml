@@ -9,5 +9,18 @@
         android:id="@+id/listFragment"
         android:name="com.example.cropdigital.items.ListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/navigateToRegistrationFragment"
+            app:destination="@id/registrationFragmen" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragmen"
+        android:name="com.example.cropdigital.register.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <argument
+            android:name="lastIndex"
+            app:argType="integer" />
+    </fragment>
 </navigation>

@@ -16,10 +16,10 @@ private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
 
-private val interceptor= HttpLoggingInterceptor().also {
+private val interceptor = HttpLoggingInterceptor().also {
     it.level = HttpLoggingInterceptor.Level.BODY
 }
-private val client =  OkHttpClient.Builder().addInterceptor(interceptor).build()
+private val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
@@ -31,19 +31,20 @@ private val retrofit = Retrofit.Builder()
 interface RepositoryApiService {
     @GET("/registro")
     fun getItems():
-            Deferred<List<Items>>
+            Deferred<List<ItemsResponse>>
 
     @GET("/registro/{index}")
     fun getIndex(@Path("index") index: Int):
-            Deferred<Items>
+            Deferred<ItemsResponse>
 
-    @Headers("Content-type: application/json")
+    @Headers("Content-Type: application/json")
     @POST("/registro")
-    fun addItems(@Body request: Items):
-            Deferred<Items>
+    fun addItems(@Body itemRequest: ItemsRequest):
+            Deferred<ItemsResponse>
 }
 
 object RepositoryApi {
-    val retrofitService : RepositoryApiService by lazy {
-        retrofit.create(RepositoryApiService::class.java) }
+    val retrofitService: RepositoryApiService by lazy {
+        retrofit.create(RepositoryApiService::class.java)
+    }
 }
