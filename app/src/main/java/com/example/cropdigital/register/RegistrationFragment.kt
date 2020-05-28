@@ -1,6 +1,5 @@
 package com.example.cropdigital.register
 
-import android.app.ActionBar
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -47,36 +46,42 @@ class RegistrationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        idRegistration.text = args.lastIndex.inc().toString()
         hourRegistration.text = getHours()
+
         setHasOptionsMenu(true)
         registerObservers()
     }
 
     private fun registerObservers() {
-        registrationViewModel.onSuccess.observe(viewLifecycleOwner, Observer { value -> value?.let { findNavController().navigateUp() } })
+        registrationViewModel.onSuccess.observe(
+            viewLifecycleOwner,
+            Observer { value -> value?.let {
+                
+                findNavController().navigateUp() } })
+
         registrationViewModel.onError.observe(viewLifecycleOwner, Observer {
             showDialog(
                 requireContext(),
                 "Error",
                 "Ha ocurrido un error",
-                "Ok")
+                "Ok"
+            )
         })
-
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        val inflater = requireActivity().menuInflater
-        inflater.inflate(R.menu.menu, menu)
-        val save = menu.findItem(R.id.guardar)
-
-        save.setOnMenuItemClickListener {
+        toolbar.menu.getItem(0).setOnMenuItemClickListener {
             if (!confirmInput()) {
                 registrationViewModel.addItem(createRequest())
                 findNavController().navigateUp()
             }
             true
         }
+        toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        val inflater = requireActivity().menuInflater
+        inflater.inflate(R.menu.menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -117,10 +122,10 @@ class RegistrationFragment : Fragment() {
         !validateParcela() || !validateTypeTask() || !validateComment()
 
     private fun createRequest(): ItemsRequest {
-        val newIndex= args.lastIndex.inc()
+        val newIndex = args.lastIndex.inc()
         val parcela = parcela.editText?.text.toString().trim()
         val typeTask = typeTaskRegistration.editText?.text.toString().trim()
         val comment = commentRegistration.editText?.text.toString().trim()
-        return ItemsRequest(newIndex,parcela, typeTask, comment)
+        return ItemsRequest(newIndex, parcela, typeTask, comment)
     }
 }

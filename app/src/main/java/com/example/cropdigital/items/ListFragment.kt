@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cropdigital.R
-import com.example.cropdigital.network.ItemsResponse
 import com.example.cropdigital.showDialog
 import kotlinx.android.synthetic.main.fragment_list.*
 import kotlinx.android.synthetic.main.row_item.*
@@ -22,15 +21,8 @@ import kotlinx.android.synthetic.main.row_item.*
  */
 class ListFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(R.layout.fragment_list, container, false)
-
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var adapter: CustomAdapter
-    private val list: MutableList<ItemsResponse> = ArrayList()
     private var recyclerView: RecyclerView? = null
     private var lastIndex: Int = 0
 
@@ -40,6 +32,12 @@ class ListFragment : Fragment() {
         super.onCreate(savedInstanceState)
         listViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
     }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
+        inflater.inflate(R.layout.fragment_list, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,14 +55,15 @@ class ListFragment : Fragment() {
     }
 
     private fun registerListeners() {
-        adapter.onClick = {
-            Bundle().apply {
-                putParcelable("Item", it)
-            }.also {
-                setFragmentResult("ItemSelected", it)
+        adapter.onClick = { item ->
+            val index= item.index
+            showMoreBtn.setOnClickListener {
+                loading.visibility = View.VISIBLE
+                listViewModel.getItemSelected(index)
+                ItemDialog().show(parentFragmentManager, "ItemDialog") 
             }
-            showMoreBtn.setOnClickListener {ItemDialog().show(parentFragmentManager, "ItemDialog") }
         }
+        
         registerBtn.setOnClickListener { findNavController().navigate(ListFragmentDirections.navigateToRegistrationFragment(lastIndex)) }
     }
 
@@ -83,6 +82,15 @@ class ListFragment : Fragment() {
                 "Error",
                 "Ha ocurrido un error",
                 "Ok")
+        })
+
+        listViewModel.onSuccess.observe(viewLifecycleOwner, Observer {it ->
+            loading.visibility = View.INVISIBLE
+            Bundle().apply {
+                putParcelable("Item", it)
+            }.also {
+                setFragmentResult("ItemSelected", it)
+            }
         })
     }
 

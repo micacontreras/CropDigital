@@ -5,91 +5,123 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".register.RegistrationFragment">
 
-    <TextView
-        android:id="@+id/idRegistration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        tools:text="#4"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginBottom="675dp"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/ibm_bold"
-        android:textSize="12sp"/>
+        app:layout_constraintVertical_bias="0.0"
+        app:menu="@menu/menu"
+        app:navigationIcon="@drawable/abc_vector_test"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Registros"
+        app:titleTextColor="#FFFFFF" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/parcela"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idRegistration"
-        style="Widget.Design.TextInputLayout">
-        <com.google.android.material.textfield.TextInputEditText
+        android:layout_height="match_parent"
+        android:layout_marginTop="32dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:context=".register.RegistrationFragment"
+        tools:layout_editor_absoluteX="16dp">
+
+        <TextView
+            android:id="@+id/idRegistration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/ibm_bold"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="#4" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/parcela"
+            style="Widget.Design.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/parcela"
-            android:fontFamily="@font/ibm_regular"/>
+            android:layout_marginTop="24dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idRegistration">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibm_regular"
+                android:hint="@string/parcela" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/typeTaskRegistration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parcela"
-        style="Widget.Design.TextInputLayout">
-    <com.google.android.material.textfield.TextInputEditText
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/typeTaskRegistration"
+            style="Widget.Design.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/tipo_de_tarea"
-            android:inputType="text"
-            android:fontFamily="@font/ibm_regular"
-            android:textSize="14sp"/>
+            android:layout_marginTop="24dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/parcela">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibm_regular"
+                android:hint="@string/tipo_de_tarea"
+                android:inputType="text"
+                android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/hourRegistration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        tools:text="14:21"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.93"
-        app:layout_constraintStart_toEndOf="@+id/idRegistration"
-        app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/ibm_bold"
-        android:textSize="12sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/commentRegistration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/typeTaskRegistration"
-        style="Widget.Design.TextInputLayout">
+        <TextView
+            android:id="@+id/hourRegistration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/ibm_bold"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.93"
+            app:layout_constraintStart_toEndOf="@+id/idRegistration"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="14:21" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/comentario"
-        android:inputType="text"
-        android:fontFamily="@font/ibm_regular"
-        android:textSize="14sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/commentRegistration"
+            style="Widget.Design.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/typeTaskRegistration">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibm_regular"
+                android:hint="@string/comentario"
+                android:inputType="text"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
