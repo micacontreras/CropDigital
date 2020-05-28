@@ -36,16 +36,14 @@ class ItemDialog : DialogFragment() {
             })
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        close.setOnClickListener { dialog?.dismiss() }
+    }
+
     private fun createLoginDialog(itemsResponse: ItemsResponse?): Dialog {
         val builder: AlertDialog.Builder = AlertDialog.Builder(activity)
-        val v =
-            requireActivity().layoutInflater.inflate(R.layout.dialog, null)
         modifyScreen(itemsResponse)
-        close?.setOnClickListener {
-            DialogInterface.OnClickListener { dialog, _ ->
-                dialog.dismiss()
-            }
-        }
         return builder.create()
     }
 

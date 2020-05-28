@@ -37,11 +37,11 @@ class RegistrationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_registration, container, false)
-        parcelaLayout = view.findViewById(R.id.parcela) as TextInputLayout
-        typeTaskLayout = view.findViewById(R.id.typeTaskRegistration) as TextInputLayout
-        commentLayout = view.findViewById(R.id.commentRegistration) as TextInputLayout
-        return view
+        val viewLayout = inflater.inflate(R.layout.fragment_registration, container, false)
+        parcelaLayout = viewLayout.findViewById(R.id.parcela) as TextInputLayout
+        typeTaskLayout = viewLayout.findViewById(R.id.typeTaskRegistration) as TextInputLayout
+        commentLayout = viewLayout.findViewById(R.id.commentRegistration) as TextInputLayout
+        return viewLayout
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,9 +57,11 @@ class RegistrationFragment : Fragment() {
     private fun registerObservers() {
         registrationViewModel.onSuccess.observe(
             viewLifecycleOwner,
-            Observer { value -> value?.let {
-                
-                findNavController().navigateUp() } })
+            Observer { value ->
+                value?.let {
+                    findNavController().navigateUp()
+                }
+            })
 
         registrationViewModel.onError.observe(viewLifecycleOwner, Observer {
             showDialog(
