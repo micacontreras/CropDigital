@@ -80,6 +80,7 @@ class ListFragment : Fragment() {
                 "Ha ocurrido un error",
                 "Ok"
             )
+            listViewModel.getListItems()
         })
 
         listViewModel.onSuccess.observe(viewLifecycleOwner, Observer { it ->
