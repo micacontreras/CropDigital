@@ -78,9 +78,9 @@ class ListFragment : Fragment() {
                 requireContext(),
                 "Error",
                 "Ha ocurrido un error",
-                "Ok"
+                "Ok",
+                {listViewModel.getListItems()}
             )
-            listViewModel.getListItems()
         })
 
         listViewModel.onSuccess.observe(viewLifecycleOwner, Observer { it ->
