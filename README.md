@@ -4,7 +4,7 @@ Aplicación que consta de una lista, creada con un RecyclerView, donde se puede 
 
 Para ello se han utilizado principalmente las siguientes herramientas:
 
-# RecyclerView
+## RecyclerView
 El widget RecyclerView es una versión más avanzada y flexible de ListView.
 
 En el modelo de RecyclerView, varios componentes diferentes trabajan juntos para mostrar tus datos. El contenedor general de tu interfaz de usuario es un objeto RecyclerView que agregas a tu diseño. El objeto RecyclerView se completa por sí solo con vistas que brinda el administrador de diseño que proporciones.
@@ -13,7 +13,7 @@ Las vistas incluidas en la lista están representadas por objetos contenedores d
 
 Un adaptador, que creas extendiendo RecyclerView.Adapter, administra los objetos contenedores de vistas. El adaptador crea contenedores de vistas, según sea necesario, y los vincula con sus datos. Para hacerlo, asigna el contenedor de vistas a una posición y llama al método onBindViewHolder() del adaptador. Este método usa la posición del contenedor de vistas para determinar cuál debería ser el contenido, en función de su posición en la lista.
 
-# Navigation Components
+## Navigation Components
 La navegación se refiere a las interacciones que permiten a los usuarios navegar a través, dentro y fuera de las diferentes piezas de contenido de tu app. El componente Navigation de Android Jetpack te permite implementar la navegación, desde simples clics de botones hasta patrones más complejos, como las barras de apps y los paneles laterales de navegación.
 El componente Navigation consta de tres partes clave que se describen a continuación:
 
@@ -23,7 +23,7 @@ El componente Navigation consta de tres partes clave que se describen a continua
   
   *NavController: Es un objeto que administra la navegación de la app dentro de un NavHost. NavController orquesta el intercambio de contenido de destino en el objeto NavHost a medida que los usuarios se mueven a través de tu app.
 
-# Material Design
+## Material Design
 Material design es una guía completa para el diseño visual, interactivo y de movimiento en plataformas y dispositivos. Android ofrece las siguientes funciones para ayudarte a crear apps de material design:
 
   *Un tema de app de material design para diseñar todos tus widgets de IU
@@ -32,7 +32,7 @@ Material design es una guía completa para el diseño visual, interactivo y de m
   
   *Nuevas API para sombras y animaciones personalizadas
   
-# Moshi
+## Moshi
 Moshi es una moderna biblioteca JSON para Android y Java. Facilita el análisis de JSON en objetos Java y Java en JSON.
 Moshi tiene soporte incorporado para leer y escribir los tipos de datos principales de Java:
 
