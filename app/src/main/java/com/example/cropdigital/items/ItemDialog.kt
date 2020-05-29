@@ -2,7 +2,6 @@ package com.example.cropdigital.items
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import com.example.cropdigital.R
 import com.example.cropdigital.getHours
 import com.example.cropdigital.network.ItemsResponse
 import kotlinx.android.synthetic.main.dialog.*
-import kotlinx.android.synthetic.main.dialog.view.*
 
 
 class ItemDialog : DialogFragment() {

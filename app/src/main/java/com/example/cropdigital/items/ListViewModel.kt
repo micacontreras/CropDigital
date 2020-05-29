@@ -8,7 +8,7 @@ import com.example.cropdigital.network.ItemsResponse
 import com.example.cropdigital.network.RepositoryApi
 import kotlinx.coroutines.launch
 
-class ListViewModel: ViewModel() {
+class ListViewModel : ViewModel() {
 
     private val _listItems = MutableLiveData<List<ItemsResponse>>()
     private val _onError = MutableLiveData<Boolean>()
@@ -38,7 +38,7 @@ class ListViewModel: ViewModel() {
         }
     }
 
-    fun getItemSelected(index:Int){
+    fun getItemSelected(index: Int) {
         viewModelScope.launch {
             val getItemDeferred = RepositoryApi.retrofitService.getIndex(index)
             try {

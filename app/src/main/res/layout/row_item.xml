@@ -37,7 +37,7 @@
             app:layout_constraintStart_toEndOf="@+id/idItem"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="14:32"
-            android:fontFamily="@font/ibm_regular"/>
+            android:fontFamily="@font/ibm_regular" />
 
         <TextView
             android:id="@+id/parcelaField"
@@ -50,7 +50,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idItem"
-            android:fontFamily="@font/ibm_bold"/>
+            android:fontFamily="@font/ibm_bold" />
 
         <TextView
             android:id="@+id/parcela"
@@ -61,7 +61,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/parcelaField"
             tools:text="410 Sur"
-            android:fontFamily="@font/ibm_regular"/>
+            android:fontFamily="@font/ibm_regular" />
 
         <TextView
             android:id="@+id/tareaField"
@@ -74,7 +74,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/parcelaField"
             app:layout_constraintTop_toBottomOf="@+id/hour"
-            android:fontFamily="@font/ibm_bold"/>
+            android:fontFamily="@font/ibm_bold" />
 
         <TextView
             android:id="@+id/taskType"
@@ -85,7 +85,7 @@
             app:layout_constraintStart_toEndOf="@+id/parcela"
             app:layout_constraintTop_toBottomOf="@+id/tareaField"
             tools:text="Podar"
-            android:fontFamily="@font/ibm_regular"/>
+            android:fontFamily="@font/ibm_regular" />
 
         <TextView
             android:id="@+id/comentField"
@@ -98,7 +98,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/parcela"
-            android:fontFamily="@font/ibm_bold"/>
+            android:fontFamily="@font/ibm_bold" />
 
         <TextView
             android:id="@+id/coment"
@@ -127,7 +127,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            android:fontFamily="@font/ibm_bold"/>
+            android:fontFamily="@font/ibm_bold" />
 
         <TextView
             android:id="@+id/textView2"
@@ -140,7 +140,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:fontFamily="@font/ibm_bold"
             android:textSize="12sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

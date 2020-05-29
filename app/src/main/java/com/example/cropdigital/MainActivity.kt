@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setupBack()
     }
 
-    private fun setupBack(){
+    private fun setupBack() {
         supportFragmentManager.addOnBackStackChangedListener {
             val stackHeight = supportFragmentManager.backStackEntryCount
             if (stackHeight > 0) {
