@@ -16,7 +16,7 @@ fun showDialog(context: Context, title: String, message: String, positiveButton:
 }
 
 fun getHours(): String {
-    val hours = Calendar.HOUR_OF_DAY
-    val minutes: Int = Calendar.MINUTE
+    val hours = Calendar.getInstance().get(Calendar.HOUR)
+    val minutes: Int = Calendar.getInstance().get(Calendar.MINUTE)
     return "$hours:$minutes"
 }

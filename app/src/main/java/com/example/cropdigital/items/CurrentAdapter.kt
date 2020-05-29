@@ -9,41 +9,45 @@ import com.example.cropdigital.getHours
 import com.example.cropdigital.network.ItemsResponse
 import kotlinx.android.synthetic.main.row_item.view.*
 
-class CustomAdapter :
+
+class CustomAdapter(private val listener: OnItemClickListener? = null) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
-    lateinit var onClick: (ItemsResponse) -> Unit
     private var dataSet = emptyList<ItemsResponse>()
 
-
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.row_item, viewGroup, false)
-        return this.ViewHolder(v)
+    interface OnItemClickListener {
+        fun onCloselicked(item: ItemsResponse)
     }
+
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder =
+        ViewHolder(
+            LayoutInflater.from(viewGroup.context).inflate(R.layout.row_item, viewGroup, false)
+        )
+
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val item = dataSet[position]
-        viewHolder.bindResponse(item, onClick)
+        viewHolder.bind(item)
     }
 
-    override fun getItemCount() =  dataSet.size
+    override fun getItemCount() = dataSet.size
 
     fun addItems(items: List<ItemsResponse>) {
         this.dataSet = items
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+    inner class ViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
 
-        private var view: View = v
+        fun bind(item: ItemsResponse) {
+            itemView.idItem.text = item.index.toString()
+            itemView.hour.text = getHours()
+            itemView.parcela.text = item.parcel
+            itemView.taskType.text = item.taskType
+            itemView.coment.text = item.comment
 
-        fun bindResponse(itemsResponse: ItemsResponse, onClick: (ItemsResponse) -> Unit) = with(itemView){
-            view.idItem.text = itemsResponse.index.toString()
-            view.hour.text = getHours()
-            view.parcela.text = itemsResponse.parcel
-            view.taskType.text = itemsResponse.taskType
-            view.coment.text = itemsResponse.comment
-            setOnClickListener{ onClick(itemsResponse) }
+            itemView.showMoreBtn.setOnClickListener { listener?.onCloselicked(item) }
         }
     }
 }

@@ -12,9 +12,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cropdigital.R
+import com.example.cropdigital.network.ItemsResponse
 import com.example.cropdigital.showDialog
 import kotlinx.android.synthetic.main.fragment_list.*
-import kotlinx.android.synthetic.main.row_item.*
 
 /**
  * A simple [Fragment] subclass.
@@ -44,7 +44,7 @@ class ListFragment : Fragment() {
 
         loading.visibility = View.VISIBLE
 
-        onCreateComponent()
+        onCreateAdapter()
 
         initView()
 
@@ -55,23 +55,20 @@ class ListFragment : Fragment() {
     }
 
     private fun registerListeners() {
-        adapter.onClick = { item ->
-            val index= item.index
-            showMoreBtn.setOnClickListener {
-                loading.visibility = View.VISIBLE
-                listViewModel.getItemSelected(index)
-                ItemDialog().show(parentFragmentManager, "ItemDialog") 
-            }
+        registerBtn.setOnClickListener {
+            findNavController().navigate(
+                ListFragmentDirections.navigateToRegistrationFragment(
+                    lastIndex
+                )
+            )
         }
-        
-        registerBtn.setOnClickListener { findNavController().navigate(ListFragmentDirections.navigateToRegistrationFragment(lastIndex)) }
     }
 
     private fun registerObservers() {
         listViewModel.listItemsResponse.observe(viewLifecycleOwner, Observer { list ->
             loading.visibility = View.INVISIBLE
             adapter.addItems(list)
-            list.forEach{ item ->
+            list.forEach { item ->
                 lastIndex = item.index
             }
         })
@@ -81,10 +78,11 @@ class ListFragment : Fragment() {
                 requireContext(),
                 "Error",
                 "Ha ocurrido un error",
-                "Ok")
+                "Ok"
+            )
         })
 
-        listViewModel.onSuccess.observe(viewLifecycleOwner, Observer {it ->
+        listViewModel.onSuccess.observe(viewLifecycleOwner, Observer { it ->
             loading.visibility = View.INVISIBLE
             Bundle().apply {
                 putParcelable("Item", it)
@@ -94,12 +92,18 @@ class ListFragment : Fragment() {
         })
     }
 
-    private fun initView() {
-        initializeRecyclerView()
+    private fun onCreateAdapter() {
+        adapter = CustomAdapter(object : CustomAdapter.OnItemClickListener {
+            override fun onCloselicked(item: ItemsResponse) {
+                loading.visibility = View.VISIBLE
+                listViewModel.getItemSelected(item.index)
+                ItemDialog().show(parentFragmentManager, "ItemDialog")
+            }
+        })
     }
 
-    private fun onCreateComponent() {
-        adapter = CustomAdapter()
+    private fun initView() {
+        initializeRecyclerView()
     }
 
     private fun initializeRecyclerView() {
