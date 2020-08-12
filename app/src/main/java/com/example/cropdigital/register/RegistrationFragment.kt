@@ -71,6 +71,7 @@ class RegistrationFragment : Fragment() {
                 "Ok"
             )
         })
+
         toolbar.menu.getItem(0).setOnMenuItemClickListener {
             if (!confirmInput()) {
                 registrationViewModel.addItem(createRequest())
